@@ -22,32 +22,22 @@ class Mahasiswa_model{
     //     "jurusan" => "Teknik Pangan"
     //     ]
     // ];
-    
-    //Buat penampung untuk koneksi ke Database
-    private $dbh; //database hangler
-    private $stmt; //statement
-
-    //Koneksi ke database di dalam methdo __construct. Ketka model di panggil yang pertama kali di lakukan adalah koneksi terlebih dahulu ke dalam database
+    private $table = "mahasiswa";
+    private $db;
 
     public function __construct(){
-        //Jangan menyimpan username dan password database kalian di difile ini
-
-        //dsn = data source name
-        //Untuk konekti ke PDO
-        $dsn = "mysql:host=localhost:8080;dbname=phpmvc";
-        try{
-            $this->dbh = new PDO($dsn, "root", "");
-        }catch(PDOException $e){
-            die($e->getMessage());
-        }
+        $this->db = new Database;
     }
 
         //Method untuk mengambil data tersebut
         public function getAllMahasiswa(){
             // return $this->mhs;
 
-            $this->stmt = $this->dbh->prepare("SELECT * FROM mahasiswa");
-            $this->stmt->execute();
-            $this->stmt->fetchAll(PDO::FETCH_ASSOC);
+            // $this->stmt = $this->dbh->prepare("SELECT * FROM mahasiswa");
+            // $this->stmt->execute();
+            // $this->stmt->fetchAll(PDO::FETCH_ASSOC);
+
+            $this->db->querry(" SELECT * FROM " . $this->table);
+            return $this->db->resultSet();
         }
 }
