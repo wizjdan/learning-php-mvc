@@ -8,5 +8,11 @@ class Controller {
         require_once"../app/views/" . $view . ".php";
 
     }
+
+    public function model( $model ){
+        require_once"../app/models/" . $model . ".php";
+        // Karena Class harus Instansiasi terlebih dahulu agar bisa digunakan
+        return new $model;
+    }
     
 }
