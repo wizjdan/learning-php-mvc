@@ -22,22 +22,45 @@ class Mahasiswa_model{
     //     "jurusan" => "Teknik Pangan"
     //     ]
     // ];
+
+    //Cara Baru
     private $table = "mahasiswa";
     private $db;
 
-    public function __construct(){
-        $this->db = new Database;
-    }
+    // public function __construct(){
+    //     $this->db = new Database;
+    // }
 
         //Method untuk mengambil data tersebut
-        public function getAllMahasiswa(){
-            // return $this->mhs;
+        // public function getAllMahasiswa(){
+        //     // return $this->mhs;
 
-            // $this->stmt = $this->dbh->prepare("SELECT * FROM mahasiswa");
-            // $this->stmt->execute();
-            // $this->stmt->fetchAll(PDO::FETCH_ASSOC);
+        //     // $this->stmt = $this->dbh->prepare("SELECT * FROM mahasiswa");
+        //     // $this->stmt->execute();
+        //     // $this->stmt->fetchAll(PDO::FETCH_ASSOC);
 
-            $this->db->querry(" SELECT * FROM " . $this->table);
-            return $this->db->resultSet();
+        //     $this->db->querry( " SELECT * FROM " . $this->table );
+        //     return $this->db->resultSet();
+        // }
+
+    //Cata Lama
+    private $dbh;
+    private $stmt;
+
+    //Koneksi ke dalam database dengan method __construct
+    public function __construct()
+    {
+        $dsn = "mysql:host=localhost;dbname=phpmvc";
+        try {
+            $this->dbh = new PDO( $dsn, "root", "" );
+        } catch (PDOException $e) {
+            die($e->getMessage());
         }
+    }
+
+    public function getAllMahasiswa(){
+        $this->stmt = $this->dbh->prepare("SELECT * FROM mahasiswa");
+        $this->stmt->execute();
+        return $this->stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
 }
