@@ -1,6 +1,7 @@
 <?php
 
 class Mahasiswa_model{
+    //Cara lama
     // private $mhs = 
     // [
     //     [
@@ -30,7 +31,6 @@ class Mahasiswa_model{
     public function __construct(){
         $this->db = new Database;
     }
-
         // Method untuk mengambil data tersebut
         public function getAllMahasiswa(){
             // return $this->mhs;
@@ -39,7 +39,7 @@ class Mahasiswa_model{
             // $this->stmt->execute();
             // $this->stmt->fetchAll(PDO::FETCH_ASSOC);
 
-            $this->db->querry( " SELECT * FROM " . $this->table );
+            $this->db->querry( ' SELECT * FROM ' . $this->table );
             return $this->db->resultSet();
         }
 
@@ -63,4 +63,13 @@ class Mahasiswa_model{
     //     $this->stmt->execute();
     //     return $this->stmt->fetchAll(PDO::FETCH_ASSOC);
     // }
+
+    public function getMahasiswaById($id){
+        $this->db->querry("SELECT * FROM" . $this->table . "WHERE id=:id");
+        $this->db->bind("id", $id);
+        $this->db->singel();
+    }
+
+
+
 }

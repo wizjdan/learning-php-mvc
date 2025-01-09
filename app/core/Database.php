@@ -1,6 +1,6 @@
 <?php
 
-class Database{
+class Database {
     private $host = DB_HOST;
     private $user = DB_USER;
     private $pass = DB_PASS;
@@ -15,7 +15,7 @@ class Database{
 
         //dsn = data source name
         //Untuk konekti ke PDO
-        $dsn = "mysql:host=" . $this->host . ";dbname=" . $this->db_name . "";
+        $dsn = "mysql:host=" . $this->host . ";dbname=" . $this->db_name;
 
         //Options
 
@@ -24,7 +24,7 @@ class Database{
             PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION
         ];
 
-        try{
+        try {
             $this->dbh = new PDO($dsn,  $this->user,  $this->pass, $option );
         } catch ( PDOException $e ) {
             die($e->getMessage());
@@ -52,6 +52,7 @@ class Database{
                 $type = PDO::PARAM_STR;
             }
         }
+        
         $this->stmt->bindValue($param, $value, $type);
 
     }
