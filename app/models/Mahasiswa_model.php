@@ -70,6 +70,22 @@ class Mahasiswa_model{
         $this->db->singel();
     }
 
+    public function tambahDataMahasiswa($data){
+        $querry = "INSERT INTO mahasiwwa 
+                    VALUES
+                    ('', :nama, :nrp, :email, :jurusan)";
+        $this->db->querry($querry);
+        $this->db->bind("nama", $data["nama"]);
+        $this->db->bind("nrp", $data["nrp"]);
+        $this->db->bind("email", $data["email"]);
+        $this->db->bind("jurusan", $data["jurusan"]);
+
+        $this->db->execute();
+
+        return $this->db->rowCount();
+
+    }
+
 
 
 }
