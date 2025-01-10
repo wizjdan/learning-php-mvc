@@ -20,7 +20,7 @@
                             <li class="list-group-item">
                                 <?= $mhs["nama"]; ?>
                                 <a href="<?= BASEURL; ?>/mahasiswa/hapus/<?= $mhs["id"]; ?>" class="badge text-bg-danger d-flex justify-content-between align-items-end ml-1" onclick="return confirm("Yakin?");">hapus</a>
-                                <a href="<?= BASEURL; ?>/mahasiswa/ubah/<?= $mhs["id"]; ?>" class="badge text-bg-success d-flex justify-content-between align-items-end ml-1 tampilModalUbah" data-bs-toggle="modal" data-bs-target="#formModal">ubah</a>
+                                <a href="<?= BASEURL; ?>/mahasiswa/ubah/<?= $mhs["id"]; ?>" class="badge text-bg-success d-flex justify-content-between align-items-end ml-1 tampilModalUbah" data-bs-toggle="modal" data-bs-target="#formModal" data-di=""<?= $mhs["id"]; ?>>ubah</a>
                                 <a href="<?= BASEURL; ?>/mahasiswa/detail/<?= $mhs["id"]; ?>" class="badge text-bg-primary d-flex justify-content-between align-items-end ml-1">detail</a>
                             </li>
                         <?php endforeach; ?>
@@ -39,6 +39,7 @@
       </div>
       <div class="modal-body">
           <form action="<?= BASEURL ?>/mahasiswa/tambah" method="post">
+                <input type="hidden" name="id" id="id">
                 <div class="mb-3">
                     <label for="nama" class="form-label">Nama</label>
                     <input type="text" class="form-control" id="nama" name="nama">
