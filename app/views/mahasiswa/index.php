@@ -11,7 +11,7 @@
         <div class="row">
             <div class="col-lg-6">
                 <!-- Button trigger modal -->
-                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#formModal">
+                <button type="button" class="btn btn-primary tombolTambahData" data-bs-toggle="modal" data-bs-target="#formModal">
                 Tambah Data Mahasiswa
                 </button>
                 <h3> Daftar Mahasiswa</h3>
@@ -19,8 +19,9 @@
                      <?php foreach ( $data["mhs"] as $mhs ) :?>
                             <li class="list-group-item">
                                 <?= $mhs["nama"]; ?>
-                                <a href="<?= BASEURL; ?>/hapus/<?= $mhs["id"]; ?>" class="badge text-bg-danger d-flex justify-content-between align-items-end ml-1" onclick="return confirm("Yakin?");">hapus</a>
-                                <a href="<?= BASEURL; ?>/detail/<?= $mhs["id"]; ?>" class="badge text-bg-primary d-flex justify-content-between align-items-end ml-1">detail</a>
+                                <a href="<?= BASEURL; ?>/mahasiswa/hapus/<?= $mhs["id"]; ?>" class="badge text-bg-danger d-flex justify-content-between align-items-end ml-1" onclick="return confirm("Yakin?");">hapus</a>
+                                <a href="<?= BASEURL; ?>/mahasiswa/ubah/<?= $mhs["id"]; ?>" class="badge text-bg-success d-flex justify-content-between align-items-end ml-1 tampilModalUbah" data-bs-toggle="modal" data-bs-target="#formModal">ubah</a>
+                                <a href="<?= BASEURL; ?>/mahasiswa/detail/<?= $mhs["id"]; ?>" class="badge text-bg-primary d-flex justify-content-between align-items-end ml-1">detail</a>
                             </li>
                         <?php endforeach; ?>
                     </ul>
