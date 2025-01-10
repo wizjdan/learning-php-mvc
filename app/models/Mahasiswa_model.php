@@ -118,6 +118,15 @@ class Mahasiswa_model{
 
     }
 
+    public function cariDataMahasiswa(){
+        $keyword = $_POST["keyword"];
+        $querry = "SELECT * FROM" . $this->table . "WHERE nama LIKE :keyword";
+
+        $this->db->querry($querry);
+        $this->db->bind("keyword", "%keyword%");
+        return $this->db->resultSet();
+    }
+
 
 
 }
