@@ -19,7 +19,8 @@
                      <?php foreach ( $data["mhs"] as $mhs ) :?>
                             <li class="list-group-item">
                                 <?= $mhs["nama"]; ?>
-                                <a href="<?= BASEURL; ?>/detail/<?= $mhs["id"]; ?>" class="badge text-bg-primary d-flex justify-content-between align-items-start">detail</a>
+                                <a href="<?= BASEURL; ?>/hapus/<?= $mhs["id"]; ?>" class="badge text-bg-danger d-flex justify-content-between align-items-end ml-1" onclick="return confirm("Yakin?");">hapus</a>
+                                <a href="<?= BASEURL; ?>/detail/<?= $mhs["id"]; ?>" class="badge text-bg-primary d-flex justify-content-between align-items-end ml-1">detail</a>
                             </li>
                         <?php endforeach; ?>
                     </ul>
